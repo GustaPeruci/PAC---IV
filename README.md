@@ -14,6 +14,6 @@ Ferramentas utilizadas para a criação do projeto
 
 Autores responsáveis pelo desenvolvimento do projeto
 
-* **Daniele Orzechowski** - [Autor1](https://github.com/DaniOrze)
-* **Gustavo Conceição** - [Autor2](https://github.com/GustaPeruci)
-* **Julia Barbara** - [Autor3](https://github.com/julia-bach)
+* [Daniele Orzechowski](https://github.com/DaniOrze)
+* [Gustavo Conceição](https://github.com/GustaPeruci)
+* [Julia Barbara](https://github.com/julia-bach)
