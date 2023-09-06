@@ -1,16 +1,20 @@
-# snackbook
+# Snackbook
 
-A new Flutter project.
+O Snackbook é uma rede social para pessoas poderem compartilhar suas receitas e interesses do mundo culinário
 
-## Getting Started
+## 📋 Pré-requisitos
+Dependências e requsitos necessários para conseguir utilizar o projeto adequadamente
 
-This project is a starting point for a Flutter application.
+## 🛠️ Construído com
 
-A few resources to get you started if this is your first Flutter project:
+Ferramentas utilizadas para a criação do projeto
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* [Flutter](http://www.https://docs.flutter.dev) - Framework mobile usado
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ✒️ Autores
+
+Autores responsáveis pelo desenvolvimento do projeto
+
+* [Daniele Orzechowski](https://github.com/DaniOrze)
+* [Gustavo Conceição](https://github.com/GustaPeruci)
+* [Julia Barbara](https://github.com/julia-bach)
