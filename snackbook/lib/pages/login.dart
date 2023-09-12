@@ -47,7 +47,9 @@ class LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed('/');
+                      },
                       child: const Text('Entrar'),
                     ),
                     ElevatedButton(
