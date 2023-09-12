@@ -17,7 +17,10 @@ class SnackBookApp extends StatelessWidget {
         '/signup': (BuildContext context) => const SignupPage(),
         '/': (BuildContext context) => const HomePage(),
       },
-      theme: ThemeData.light(useMaterial3: true),
+      theme: ThemeData(
+        useMaterial3: true,
+        fontFamily: 'Tajawal',
+      ),
     );
   }
 }
