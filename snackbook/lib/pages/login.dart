@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snackbook/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: background,
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -27,6 +29,13 @@ class LoginPageState extends State<LoginPage> {
                 TextField(
                   decoration: InputDecoration(
                     labelText: 'Nome de Usuário',
+                    labelStyle: TextStyle(color: kShrineGreen900),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: kShrineGreen900),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: kShrineGreen400),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -36,6 +45,13 @@ class LoginPageState extends State<LoginPage> {
                 TextField(
                   decoration: InputDecoration(
                     labelText: 'Senha',
+                    labelStyle: TextStyle(color: kShrineGreen900),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: kShrineGreen900),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: kShrineGreen400),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -50,13 +66,34 @@ class LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.of(context).pushReplacementNamed('/');
                       },
-                      child: const Text('Entrar'),
+                      child: const Text('Entrar',
+                        style: TextStyle(color: kShrineGreen50),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 8.0,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        backgroundColor: kShrineGreen900,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.0,
                     ),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).pushNamed('/signup');
                       },
-                      child: const Text('Criar Conta'),
+                      child: const Text('Criar Conta',
+                        style: TextStyle(color: kShrineGreen50),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        elevation: 8.0,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        ),
+                        backgroundColor: kShrineGreen900,
+                      ),
                     ),
                   ],
                 ),
