@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../colors.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,7 +28,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Snackbook'),
         centerTitle: true,
-        backgroundColor: kShrineGreen900,
+        backgroundColor: kSbGreen900,
         leading: IconButton(
           icon: Icon(Icons.list),
           onPressed: () {},
@@ -47,34 +46,35 @@ class HomePage extends StatelessWidget {
           final item = feedItems[index];
           return Card(
             elevation: 2.0,
-            margin: EdgeInsets.all(8.0),
+            margin: EdgeInsets.all(30.0),
             child: Column(
               children: [
-                Image.asset(
-                  item.image,
-                  width: double.infinity,
-                  height: 150.0,
-                  fit: BoxFit.cover,
+                Stack(
+                  children: [
+                    Image.asset(
+                      item.image,
+                      width: double.infinity,
+                      height: 400.0,
+                      fit: BoxFit.cover,
+                    ),
+                    Positioned(
+                      bottom: 8,
+                      right: 8,
+                      child: Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(30.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         item.title,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          Icons.favorite_border,
-                          color: Colors.red,
-                          size: 24.0,
-                        ),
-                        onPressed: () {},
+                        style: TextStyle(fontSize: 16.0),
                       ),
                     ],
                   ),
