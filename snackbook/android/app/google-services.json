@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "979873319160",
+    "project_id": "snackbook-9787f",
+    "storage_bucket": "snackbook-9787f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979873319160:android:a1da9258e62c964464d30d",
+        "android_client_info": {
+          "package_name": "com.example.snackbook"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeRxUKbbmRr_wNTC74JKMpvtWBvVScevs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
