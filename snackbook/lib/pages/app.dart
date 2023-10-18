@@ -22,6 +22,15 @@ ThemeData myTheme = ThemeData(
       borderRadius: BorderRadius.circular(10.0),
     ),
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      elevation: 8.0,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+      ),
+      primary: kSbGreen900,
+    ),
+  ),
 );
 
 class SnackBookApp extends StatelessWidget {
