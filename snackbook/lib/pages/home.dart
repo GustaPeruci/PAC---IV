@@ -55,11 +55,16 @@ class HomePage extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    Image.asset(
-                      item.image,
-                      width: double.infinity,
-                      height: 400.0,
-                      fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/recipesInfos');
+                      },
+                      child: Image.asset(
+                        item.image,
+                        width: double.infinity,
+                        height: 400.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     Positioned(
                       bottom: 8,

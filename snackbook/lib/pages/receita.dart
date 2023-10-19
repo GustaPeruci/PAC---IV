@@ -11,10 +11,8 @@ class ReceitaPage extends StatefulWidget {
 }
 
 class _ReceitaPageState extends State<ReceitaPage> {
-
   // firestore
   final FirestoreService firestoreService = FirestoreService();
-
 
   // text controller
   final TextEditingController nameController = TextEditingController();
@@ -81,7 +79,6 @@ class _ReceitaPageState extends State<ReceitaPage> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +88,9 @@ class _ReceitaPageState extends State<ReceitaPage> {
         backgroundColor: kSbGreen900,
         leading: IconButton(
           icon: Icon(Icons.list),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('/');
+          },
         ),
         actions: [
           IconButton(
@@ -110,86 +109,83 @@ class _ReceitaPageState extends State<ReceitaPage> {
         stream: firestoreService.getNotesStream(),
         builder: (context, snapshot) {
           // if have data, get all the docs
-          if(snapshot.hasData) {
-          List notesList = snapshot.data!.docs;
+          if (snapshot.hasData) {
+            List notesList = snapshot.data!.docs;
 
-          // display as a list
-          return ListView.builder(
-            itemCount: notesList.length,
-            itemBuilder: (context, index) {
-              DocumentSnapshot document = notesList[index];
-              String docID = document.id;
-              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-              String nome = data['nome'];
-              String imagem = data['imagem'];
-              String descricao = data['descricao'];
+            // display as a list
+            return ListView.builder(
+              itemCount: notesList.length,
+              itemBuilder: (context, index) {
+                DocumentSnapshot document = notesList[index];
+                String docID = document.id;
+                Map<String, dynamic> data =
+                    document.data() as Map<String, dynamic>;
+                String nome = data['nome'];
+                String imagem = data['imagem'];
+                String descricao = data['descricao'];
 
-              return Card(
-                elevation: 2.0,
-                margin: EdgeInsets.all(30.0),
-                child: Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Image.network(
-                          imagem, // Use a imagem do Firestore (você pode precisar ajustar isso)
-                          width: double.infinity,
-                          height: 400.0,
-                          fit: BoxFit.cover,
-                        ),
-                        Positioned(
-                          bottom: 8,
-                          right: 8,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                onPressed: () => openNoteBox(docID: docID, data: data),
-                                icon: const Icon(Icons.settings),
-                              ),
-                              IconButton(
-                                onPressed: () => firestoreService.deleteNote(docID),
-                                icon: const Icon(Icons.delete),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                return Card(
+                  elevation: 2.0,
+                  margin: EdgeInsets.all(30.0),
+                  child: Column(
+                    children: [
+                      Stack(
                         children: [
-                          Text(
-                            nome,
-                            style: TextStyle(fontSize: 16.0),
+                          Image.network(
+                            imagem, // Use a imagem do Firestore (você pode precisar ajustar isso)
+                            width: double.infinity,
+                            height: 400.0,
+                            fit: BoxFit.cover,
+                          ),
+                          Positioned(
+                            bottom: 8,
+                            right: 8,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  onPressed: () =>
+                                      openNoteBox(docID: docID, data: data),
+                                  icon: const Icon(Icons.settings),
+                                ),
+                                IconButton(
+                                  onPressed: () =>
+                                      firestoreService.deleteNote(docID),
+                                  icon: const Icon(Icons.delete),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: Text(
-                        descricao,
-                        style: TextStyle(fontSize: 14.0),
-
+                      Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              nome,
+                              style: TextStyle(fontSize: 16.0),
+                            ),
+                          ],
+                        ),
                       ),
-
-                    ),
-                  ],
-                ),
-
-              );
-
-            },
-          );
-
-
+                      Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Text(
+                          descricao,
+                          style: TextStyle(fontSize: 14.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
           } else {
-        return const Text("No notes...");
-      }
-  },
+            return const Text("No notes...");
+          }
+        },
       ),
     );
   }
