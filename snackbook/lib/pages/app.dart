@@ -6,6 +6,8 @@ import 'login.dart';
 import 'signup.dart';
 import 'profile.dart';
 import 'editProfile.dart';
+import 'receita.dart';
+import 'settings.dart';
 
 ThemeData myTheme = ThemeData(
   useMaterial3: true,
@@ -38,6 +40,8 @@ class SnackBookApp extends StatelessWidget {
         '/signup': (BuildContext context) => const SignupPage(),
         '/profile': (BuildContext context) => const ProfilePage(),
         '/editProfile': (BuildContext context) => const EditProfilePage(),
+        '/receita': (BuildContext context) => const Receita(),
+        '/settings': (BuildContext context) => const Settings(),
         '/': (BuildContext context) => const HomePage(),
       },
       theme: myTheme,

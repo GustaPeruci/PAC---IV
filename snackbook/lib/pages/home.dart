@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import 'receita.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key});
@@ -20,7 +21,7 @@ class HomePage extends StatelessWidget {
       FeedItem(
         username: 'user3',
         image: 'assets/receitas/fileparmegiana.jpg',
-        title: 'Filé à parmegiana',
+        title: 'Filé à parmegiana'
       ),
     ];
 
