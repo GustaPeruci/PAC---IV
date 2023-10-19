@@ -31,7 +31,9 @@ class HomePage extends StatelessWidget {
         backgroundColor: kSbGreen900,
         leading: IconButton(
           icon: Icon(Icons.list),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('/receita');
+          },
         ),
         actions: [
           IconButton(
