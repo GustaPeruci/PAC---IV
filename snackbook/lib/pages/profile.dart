@@ -14,6 +14,15 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Perfil'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            color: kSbGreen900,
+            onPressed: () {
+              Navigator.of(context).pushNamed('/settings');
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
