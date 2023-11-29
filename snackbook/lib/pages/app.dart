@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:snackbook/colors.dart';
-import 'package:snackbook/pages/receita.dart';
 
 import 'home.dart';
 import 'login.dart';
@@ -51,7 +50,6 @@ class SnackBookApp extends StatelessWidget {
         '/profile': (BuildContext context) => const ProfilePage(),
         '/editProfile': (BuildContext context) => const EditProfilePage(),
         '/': (BuildContext context) => const HomePage(),
-        '/receita': (BuildContext context) => const ReceitaPage(),
         '/recipesInfos': (BuildContext context) => const RecipesInfosPage(),
         '/settings': (BuildContext context) => const SettingsPage(),
       },
