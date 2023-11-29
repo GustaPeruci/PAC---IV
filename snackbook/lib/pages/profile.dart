@@ -76,38 +76,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 style: TextStyle(color: kSbGreen900),
               ),
             ),
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.favorite),
-                        color: kSbGreen900,
-                        onPressed: () {},
-                      ),
-                      Text(
-                        "Curtidas",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      SizedBox(width: 50),
-                      IconButton(
-                        icon: Icon(Icons.book),
-                        color: kSbGreen900,
-                        onPressed: () {},
-                      ),
-                      Text(
-                        "Posts",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
           ],
         ),
       ),
