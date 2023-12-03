@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:snackbook/services/firestore.dart';
+import 'recipe.dart';
 import '../colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,13 +19,16 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController imagemController = TextEditingController();
   final TextEditingController descricaoController = TextEditingController();
+  final TextEditingController ingredientesController = TextEditingController();
+  final TextEditingController instrucoesController = TextEditingController();
 
-  // open a dialog vox to add a note
   void openNoteBox({String? docID, Map<String, dynamic>? data}) {
     if (data != null) {
       nameController.text = data['nome'] ?? '';
       imagemController.text = data['imagem'] ?? '';
       descricaoController.text = data['descricao'] ?? '';
+      ingredientesController.text = (data['ingredientes'] as List).join('\n');
+      instrucoesController.text = (data['instrucoes'] as List).join('\n');
     }
 
     showDialog(
@@ -52,23 +56,32 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
             onPressed: () {
               if (docID == null || docID.isEmpty) {
+                // Chamar addNote com todos os campos
                 firestoreService.addNote(
                   nameController.text,
                   imagemController.text,
                   descricaoController.text,
+                  ingredientesController.text.split('\n'),
+                  instrucoesController.text.split('\n'),
                 );
               } else {
+                // Chamar updateNote com todos os campos
                 firestoreService.updateNote(
                   docID,
                   nameController.text,
                   imagemController.text,
                   descricaoController.text,
+                  ingredientesController.text.split('\n'),
+                  instrucoesController.text.split('\n'),
                 );
               }
 
+              // Limpar controladores
               nameController.clear();
               imagemController.clear();
               descricaoController.clear();
+              ingredientesController.clear();
+              instrucoesController.clear();
 
               Navigator.pop(context);
             },
@@ -131,7 +144,14 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pushNamed('/recipesInfos');
+                              Navigator.of(context).pushNamed('/recipe');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      RecipePage(receita: data, docID: docID),
+                                ),
+                              );
                             },
                             child: Image.network(
                               imagem, // Use a imagem do Firestore (você pode precisar ajustar isso)

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../colors.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -9,6 +11,37 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  String _username = '';
+  String _fullName = '';
+  String _phone = '';
+  String _bio = '';
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch the user's data and update the state
+    fetchUserData();
+  }
+
+  Future<void> fetchUserData() async {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .get();
+
+      if (userDoc.exists) {
+        setState(() {
+          _username = userDoc['username'] ?? '';
+          _fullName = userDoc['fullName'] ?? '';
+          _phone = userDoc['phone'] ?? '';
+          _bio = userDoc['bio'] ?? '';
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,17 +61,8 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 150,
-              width: 150,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: kSbGreen900,
-              ),
-            ),
-            SizedBox(height: 10),
             Text(
-              'Nome do usuário',
+              _username,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -46,21 +70,21 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             SizedBox(height: 10),
             Text(
-              'Nome completo',
+              _fullName,
               style: TextStyle(
                 fontSize: 20,
               ),
             ),
             SizedBox(height: 10),
             Text(
-              'Celular',
+              _phone,
               style: TextStyle(
                 fontSize: 16,
               ),
             ),
             SizedBox(height: 10),
             Text(
-              'Biografia do usuário',
+              _bio,
               style: TextStyle(
                 fontSize: 16,
               ),

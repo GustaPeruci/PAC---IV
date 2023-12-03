@@ -17,17 +17,10 @@ class _SettingsPageState extends State<SettingsPage> {
       body: ListView(
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Notificações'),
-            onTap: () {
-              // Adicione a lógica para configurar as notificações aqui
-            },
-          ),
-          ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
             onTap: () {
-              // Adicione a lógica para sair da conta aqui
+              Navigator.of(context).pushReplacementNamed('/login');
             },
           ),
         ],
